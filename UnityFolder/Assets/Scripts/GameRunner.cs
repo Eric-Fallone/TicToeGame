@@ -24,11 +24,12 @@ public class GameRunner : MonoBehaviour {
 	public Button[] butNodeInputs;
 	public Button[] butDirInputs;
 	public Button butConfirm;
-
+	public float delayForPhase;
+	public float delayForPhaseSmoothness;
 
 	void Start () {
 		S = this;
-		curPlayer = 1;
+		curPlayer = 0;
 		//error checking
 		if(playerMat.Length != 3){
 			Debug.Log("Error with player Material Array size");
@@ -45,7 +46,7 @@ public class GameRunner : MonoBehaviour {
 		playerNames[3]="Both players win...so its a draw";
 		//dont destroy on load object from menu
 		playerNames [0] += "Player One has won";
-		playerNames [1] += "Player One has won";
+		playerNames [1] += "Player Two has won";
 	}
 
 	public void nextTurn(){
@@ -55,11 +56,9 @@ public class GameRunner : MonoBehaviour {
 			curPlayer = 0;
 		}
 		//populates tic tac toe board
-		PopulateBoard ();
-		//check to see if any player won after board turned
-		CheckPlayerWin ();
+		StartCoroutine( PopulateBoard ());
 	}
-	public void PopulateBoard(){
+	IEnumerator PopulateBoard(){
 		bool validMove = false;
 		for (int i=0;i<inputNodes.Length;i++) {
 			inputNodes[i].playNum=2;
@@ -74,14 +73,23 @@ public class GameRunner : MonoBehaviour {
 				}
 			}
 			if(inputNodes[i].playNum==2){
-				butNodeInputs[i].gameObject.SetActive(true);
 				validMove = true;
 			}
 		}
-		if(validMove == false){
-			playerVictory(2);
-		}
+		if (validMove == false) {
+			playerVictory (2);
+		} 
+
 		PhaseInTicTacToeBoard (true);
+		yield return new WaitForSeconds (delayForPhase);
+		if(CheckPlayerWin()==true){
+			yield break;
+		}
+		for (int i=0;i<inputNodes.Length;i++){
+			if(inputNodes[i].playNum==2){
+				butNodeInputs[i].gameObject.SetActive(true);
+			}
+		}
 	}
 	Cube_Node findClosestCubeNode(Transform tran){
 		GameObject[] allNodes = GameObject.FindGameObjectsWithTag("Node"); 
@@ -116,14 +124,16 @@ public class GameRunner : MonoBehaviour {
 			node.renderer.material.color = endingCol;
 			startingCol = playerMat [node.playNum].color; 
 		}
-			for(float i=0;i < 1f;i=i+.005f){
+		float delayforPhaseInc= delayForPhase/delayForPhaseSmoothness;
+			for(float i=0;i <= delayForPhase;i=i+delayforPhaseInc){
 				node.renderer.material.color = Color.Lerp(startingCol,endingCol,i);
-				yield return new WaitForSeconds(.000005f);
+				yield return new WaitForSeconds(delayforPhaseInc);
 			}
+		node.renderer.material.color = endingCol;
 
 	}
 
-	void CheckPlayerWin(){
+	bool CheckPlayerWin(){
 		int winningPlayer=2;
 		bool bothWin = false;
 		if(inputNodes[4].playNum != 2 && inputNodes[4].playNum == inputNodes[0].playNum && inputNodes[4].playNum == inputNodes[8].playNum){
@@ -200,12 +210,14 @@ public class GameRunner : MonoBehaviour {
 		}
 
 		if(winningPlayer==2){
-			return;
+			return false;
 		}
 		if(bothWin==true){
 			playerVictory(3);
+		}else{
+			playerVictory (winningPlayer);
 		}
-		playerVictory (winningPlayer);
+		return true;
 	}
 
 	void playerVictory(int winningPlayer){
@@ -259,15 +271,25 @@ public class GameRunner : MonoBehaviour {
 		}
 
 	public void ConfirmSel(){
-		//checks to see if player has won
-		CheckPlayerWin ();
+		StartCoroutine (ConfirmSelHelper());
+	}
+
+	IEnumerator ConfirmSelHelper(){
 		//cube is updated
 		findClosestCubeNode (inputNodes[playerSel].transform.GetChild(0).transform).setColor(playerMat[curPlayer]);
-		//clear tic tac toe board
-		PhaseInTicTacToeBoard (false);
+		inputNodes [playerSel].playNum = curPlayer;
+		inputNodes [playerSel].renderer.material=playerMat[curPlayer];
+
 		foreach(Button but in butNodeInputs){
 			but.gameObject.SetActive(false);
 		}
+
+		if(CheckPlayerWin()==true){
+			yield break;
+		}
+
+		PhaseInTicTacToeBoard (false);
+		yield return new WaitForSeconds(delayForPhase);
 		//board moves
 		prevDir = playerChoiceDir;
 		Cube_Movement.S.moveDir (playerChoiceDir);
