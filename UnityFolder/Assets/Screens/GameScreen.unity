@@ -147,6 +147,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 0
+  smoothness: 0
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!23 &157853871
 Renderer:
   m_ObjectHideFlags: 0
@@ -173,7 +177,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 157853868}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!1 &169057900
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,6 +350,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &186364701
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,6 +423,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &196184035
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,8 +460,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: .5}
   m_AnchorMax: {x: 0, y: .5}
-  m_AnchoredPosition: {x: 60, y: 0}
-  m_SizeDelta: {x: 80, y: 30}
+  m_AnchoredPosition: {x: 250, y: 0}
+  m_SizeDelta: {x: 80, y: 460}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &196184037
 MonoBehaviour:
@@ -639,6 +651,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &201019186
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,6 +817,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &296274476
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,6 +866,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 0
+  smoothness: 0
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!23 &296274479
 Renderer:
   m_ObjectHideFlags: 0
@@ -872,7 +896,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 296274476}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!1 &339841822
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,6 +942,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 0
+  smoothness: 0
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!23 &339841825
 Renderer:
   m_ObjectHideFlags: 0
@@ -944,7 +972,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 339841822}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!1 &362919443
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,6 +1042,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &387453690
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,8 +1106,8 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 1, y: .5}
   m_AnchorMax: {x: 1, y: .5}
-  m_AnchoredPosition: {x: -60, y: 0}
-  m_SizeDelta: {x: 80, y: 30}
+  m_AnchoredPosition: {x: -250, y: 0}
+  m_SizeDelta: {x: 80, y: 460}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &395942838
 MonoBehaviour:
@@ -1202,8 +1234,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: 1}
   m_AnchorMax: {x: .5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -30}
-  m_SizeDelta: {x: 80, y: 30}
+  m_AnchoredPosition: {x: 0, y: -60}
+  m_SizeDelta: {x: 460, y: 80}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &428554522
 MonoBehaviour:
@@ -1400,7 +1432,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 442264665}
-  - 114: {fileID: 442264667}
   - 114: {fileID: 442264666}
   m_Layer: 0
   m_Name: _GameRunner
@@ -1443,6 +1474,8 @@ MonoBehaviour:
   availableChoices: []
   playerChoiceDir: 
   prevDir: 
+  prevChoiceInputNode: -1
+  prevChoiceDirection: -1
   inputNodes:
   - {fileID: 339841824}
   - {fileID: 1176632341}
@@ -1469,25 +1502,9 @@ MonoBehaviour:
   - {fileID: 196184037}
   - {fileID: 395942838}
   butConfirm: {fileID: 1690050957}
-  delayForPhase: 1
+  delayForPhase: .75
   delayForPhaseSmoothness: 10
---- !u!114 &442264667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 442264664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 500533181b9d88346a9c6cc046916e98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 0
-  start: {x: 0, y: 0, z: 0}
-  target: {x: 0, y: 0, z: 0}
-  rotSpeed: 5
-  percentComp: 0
-  rotDir: 0
+  delayForStartingGame: 1.25
 --- !u!1 &448847123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,7 +1538,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 180, y: 0}
-  m_SizeDelta: {x: 30, y: 30}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &448847125
 MonoBehaviour:
@@ -1547,7 +1564,7 @@ MonoBehaviour:
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .242647052, g: .242647052, b: .242647052, a: 1}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -1672,6 +1689,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &459478175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,6 +1762,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &481586537
 GameObject:
   m_ObjectHideFlags: 0
@@ -1918,6 +1943,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &712002867
 GameObject:
   m_ObjectHideFlags: 0
@@ -2035,7 +2064,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 180}
-  m_SizeDelta: {x: 30, y: 30}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &728096298
 MonoBehaviour:
@@ -2061,7 +2090,7 @@ MonoBehaviour:
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .242647052, g: .242647052, b: .242647052, a: 1}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -2186,6 +2215,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &780802369
 GameObject:
   m_ObjectHideFlags: 0
@@ -2220,7 +2253,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: 0}
   m_AnchorMax: {x: .5, y: 0}
   m_AnchoredPosition: {x: 0, y: 30}
-  m_SizeDelta: {x: 80, y: 30}
+  m_SizeDelta: {x: 460, y: 80}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &780802371
 MonoBehaviour:
@@ -2359,6 +2392,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 0
+  smoothness: 0
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!23 &785457663
 Renderer:
   m_ObjectHideFlags: 0
@@ -2385,7 +2422,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 785457660}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!1 &805262753
 GameObject:
   m_ObjectHideFlags: 0
@@ -2482,6 +2519,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &826910223
 GameObject:
   m_ObjectHideFlags: 0
@@ -2515,7 +2556,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 180, y: 180}
-  m_SizeDelta: {x: 30, y: 30}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &826910225
 MonoBehaviour:
@@ -2541,7 +2582,7 @@ MonoBehaviour:
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .242647052, g: .242647052, b: .242647052, a: 1}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -2732,6 +2773,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &867546291
 GameObject:
   m_ObjectHideFlags: 0
@@ -2801,6 +2846,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &892681740
 GameObject:
   m_ObjectHideFlags: 0
@@ -2870,6 +2919,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &908705956
 GameObject:
   m_ObjectHideFlags: 0
@@ -2939,6 +2992,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &917094450
 GameObject:
   m_ObjectHideFlags: 0
@@ -3071,6 +3128,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1007087699
 GameObject:
   m_ObjectHideFlags: 0
@@ -3167,6 +3228,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1046327716
 GameObject:
   m_ObjectHideFlags: 0
@@ -3236,6 +3301,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1063509538
 GameObject:
   m_ObjectHideFlags: 0
@@ -3269,7 +3338,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -180, y: -180}
-  m_SizeDelta: {x: 30, y: 30}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1063509540
 MonoBehaviour:
@@ -3295,7 +3364,7 @@ MonoBehaviour:
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .242647052, g: .242647052, b: .242647052, a: 1}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -3474,6 +3543,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1161918991
 GameObject:
   m_ObjectHideFlags: 0
@@ -3546,6 +3619,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 0
+  smoothness: 0
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!23 &1169124083
 Renderer:
   m_ObjectHideFlags: 0
@@ -3572,7 +3649,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1169124080}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!1 &1176632339
 GameObject:
   m_ObjectHideFlags: 0
@@ -3618,6 +3695,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 0
+  smoothness: 0
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!23 &1176632342
 Renderer:
   m_ObjectHideFlags: 0
@@ -3644,7 +3725,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1176632339}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!1 &1330539115
 GameObject:
   m_ObjectHideFlags: 0
@@ -3732,7 +3813,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -180, y: 180}
-  m_SizeDelta: {x: 30, y: 30}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1355509728
 MonoBehaviour:
@@ -3758,7 +3839,7 @@ MonoBehaviour:
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .242647052, g: .242647052, b: .242647052, a: 1}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -3883,6 +3964,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1369833439
 GameObject:
   m_ObjectHideFlags: 0
@@ -4072,6 +4157,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1405413038
 GameObject:
   m_ObjectHideFlags: 0
@@ -4168,6 +4257,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1430643196
 GameObject:
   m_ObjectHideFlags: 0
@@ -4237,6 +4330,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1442955343
 GameObject:
   m_ObjectHideFlags: 0
@@ -4306,6 +4403,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1462745148
 GameObject:
   m_ObjectHideFlags: 0
@@ -4377,6 +4478,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 0
+  smoothness: 0
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!23 &1486912881
 Renderer:
   m_ObjectHideFlags: 0
@@ -4403,7 +4508,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1486912878}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!1 &1497858836
 GameObject:
   m_ObjectHideFlags: 0
@@ -4563,6 +4668,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1593590193
 GameObject:
   m_ObjectHideFlags: 0
@@ -4635,6 +4744,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 0
+  smoothness: 0
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!23 &1641611032
 Renderer:
   m_ObjectHideFlags: 0
@@ -4661,7 +4774,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1641611029}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!1 &1643221300
 GameObject:
   m_ObjectHideFlags: 0
@@ -4758,6 +4871,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1674619659
 GameObject:
   m_ObjectHideFlags: 0
@@ -4829,6 +4946,7 @@ MonoBehaviour:
   rotSpeed: 1.5
   percentComp: 0
   rotDir: 0
+  delayForStartingGame: 0
 --- !u!1 &1690050955
 GameObject:
   m_ObjectHideFlags: 0
@@ -4862,8 +4980,8 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 1, y: .5}
   m_AnchorMax: {x: 1, y: .5}
-  m_AnchoredPosition: {x: -224.649994, y: 0}
-  m_SizeDelta: {x: 80, y: 30}
+  m_AnchoredPosition: {x: -69.1999969, y: -300.799988}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1690050957
 MonoBehaviour:
@@ -5038,7 +5156,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 30, y: 30}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1715824140
 MonoBehaviour:
@@ -5064,7 +5182,7 @@ MonoBehaviour:
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .242647052, g: .242647052, b: .242647052, a: 1}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -5189,6 +5307,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 50
+  smoothness: .000500000024
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1867536127
 GameObject:
   m_ObjectHideFlags: 0
@@ -5222,7 +5344,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 180, y: -180}
-  m_SizeDelta: {x: 30, y: 30}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1867536129
 MonoBehaviour:
@@ -5248,7 +5370,7 @@ MonoBehaviour:
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .242647052, g: .242647052, b: .242647052, a: 1}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -5449,6 +5571,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playNum: 0
+  incrementsToTarget: 0
+  smoothness: 0
+  isInputNode: 0
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!23 &1897382452
 Renderer:
   m_ObjectHideFlags: 0
@@ -5475,7 +5601,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1897382449}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!1 &1926992709
 GameObject:
   m_ObjectHideFlags: 0
@@ -5509,7 +5635,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -180, y: 0}
-  m_SizeDelta: {x: 30, y: 30}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1926992711
 MonoBehaviour:
@@ -5535,7 +5661,7 @@ MonoBehaviour:
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .242647052, g: .242647052, b: .242647052, a: 1}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -5719,7 +5845,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: -180}
-  m_SizeDelta: {x: 30, y: 30}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &2001377052
 MonoBehaviour:
@@ -5745,7 +5871,7 @@ MonoBehaviour:
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .242647052, g: .242647052, b: .242647052, a: 1}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}

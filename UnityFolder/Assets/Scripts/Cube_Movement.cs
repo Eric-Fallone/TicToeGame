@@ -3,7 +3,8 @@ using System.Collections;
 
 public enum State{
 	idle,
-	moving
+	moving,
+	start
 }
 
 public class Cube_Movement : MonoBehaviour {
@@ -17,6 +18,8 @@ public class Cube_Movement : MonoBehaviour {
 
 	public float percentComp;
 	public float rotDir;
+
+	public float delayForStartingGame;
 	
 	// Use this for initialization
 	void Start () {
@@ -24,7 +27,7 @@ public class Cube_Movement : MonoBehaviour {
 		this.transform.localEulerAngles = new Vector3 (0,0,0);
 		start = new Vector3 (0,0,0);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if(state == State.idle){
@@ -47,7 +50,7 @@ public class Cube_Movement : MonoBehaviour {
 			return;
 		}
 		percentComp = 0;
-		target = start;
+
 		state = State.moving;
 		target = new Vector3 (0,0,0);
 	

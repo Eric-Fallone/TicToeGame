@@ -17,6 +17,8 @@ public class GameRunner : MonoBehaviour {
 
 	public string playerChoiceDir;
 	public string prevDir;
+	public int prevChoiceInputNode;
+	public int prevChoiceDirection;
 	// // // // // // //
 
 	//From Editor 
@@ -26,6 +28,7 @@ public class GameRunner : MonoBehaviour {
 	public Button butConfirm;
 	public float delayForPhase;
 	public float delayForPhaseSmoothness;
+	public float delayForStartingGame;
 
 	void Start () {
 		S = this;
@@ -47,6 +50,23 @@ public class GameRunner : MonoBehaviour {
 		//dont destroy on load object from menu
 		playerNames [0] += "Player One has won";
 		playerNames [1] += "Player Two has won";
+
+		StartCoroutine (waitToStart());
+	}
+
+	IEnumerator waitToStart(){
+		gameStart(false);
+		yield return new WaitForSeconds (delayForStartingGame);
+		gameStart(true);
+	}
+
+	public void gameStart(bool stateI){
+		foreach(Button but in butDirInputs){
+			but.gameObject.SetActive(stateI);
+		}
+		foreach(Button but in butNodeInputs){
+			but.gameObject.SetActive(stateI);
+		}
 	}
 
 	public void nextTurn(){
@@ -86,8 +106,18 @@ public class GameRunner : MonoBehaviour {
 			yield break;
 		}
 		for (int i=0;i<inputNodes.Length;i++){
-			if(inputNodes[i].playNum==2){
-				butNodeInputs[i].gameObject.SetActive(true);
+			butNodeInputs[i].gameObject.SetActive(true);
+
+			ColorBlock cb = butNodeInputs[i].colors;
+
+			if(inputNodes[i].playNum!=2){
+				cb.disabledColor = playerMat[inputNodes[i].playNum].color;
+
+				butNodeInputs[i].colors = cb;
+				butNodeInputs[i].interactable = false;
+			}else{
+				cb.disabledColor = playerMat[2].color;
+				butNodeInputs[i].interactable = true;
 			}
 		}
 	}
@@ -130,7 +160,6 @@ public class GameRunner : MonoBehaviour {
 				yield return new WaitForSeconds(delayforPhaseInc);
 			}
 		node.renderer.material.color = endingCol;
-
 	}
 
 	bool CheckPlayerWin(){
@@ -234,7 +263,20 @@ public class GameRunner : MonoBehaviour {
 
 	public void chooseNode(int go){
 		playerSel = go;
+
 		//highlight selection
+		ColorBlock cb;
+		if(prevChoiceInputNode != -1){
+			cb = butNodeInputs[prevChoiceInputNode].colors;
+			cb.highlightedColor = playerMat [2].color;
+			cb.normalColor = playerMat [2].color;
+			butNodeInputs[prevChoiceInputNode].colors = cb;
+		}
+		prevChoiceInputNode = go;
+		cb = butNodeInputs [go].colors;
+		cb.highlightedColor = playerMat [curPlayer].color;
+		cb.normalColor = playerMat [curPlayer].color;
+		butNodeInputs[go].colors = cb;
 
 		switch (prevDir) {
 		case "up":
@@ -268,7 +310,36 @@ public class GameRunner : MonoBehaviour {
 	public void chooseDir(string go){
 		playerChoiceDir = go;
 		//highlight selevetion
+		ColorBlock cb;
+		if(prevChoiceDirection != -1){
+			cb = butDirInputs[prevChoiceDirection].colors;
+			cb.normalColor = playerMat[2].color;
+			cb.highlightedColor = playerMat[2].color;
+			butDirInputs[prevChoiceDirection].colors = cb;
 		}
+
+		switch(go){
+		case "up":
+			prevChoiceDirection = 0;
+			break;
+		case "down":
+			prevChoiceDirection = 1;
+			break;
+		case "left":
+			prevChoiceDirection = 2;
+			break;
+		case "right":
+			prevChoiceDirection = 3;
+			break;
+		case"":
+			
+			break;
+		}
+		cb = butDirInputs[prevChoiceDirection].colors;
+		cb.normalColor = playerMat[curPlayer].color;
+		cb.highlightedColor = playerMat[curPlayer].color;
+		butDirInputs[prevChoiceDirection].colors = cb;
+	}
 
 	public void ConfirmSel(){
 		StartCoroutine (ConfirmSelHelper());
@@ -287,7 +358,21 @@ public class GameRunner : MonoBehaviour {
 		if(CheckPlayerWin()==true){
 			yield break;
 		}
-
+		ColorBlock cb;
+		if(prevChoiceInputNode != -1){
+			cb = butNodeInputs [prevChoiceInputNode].colors;
+			cb.normalColor = playerMat [2].color;
+			cb.highlightedColor = playerMat [2].color;
+			butNodeInputs [prevChoiceInputNode].colors = cb;
+		}
+		if(prevChoiceDirection != -1){
+			cb = butDirInputs [prevChoiceDirection].colors;
+			cb.normalColor = playerMat [2].color;
+			cb.highlightedColor = playerMat [2].color;
+			butDirInputs [prevChoiceDirection].colors = cb;
+		}
+		prevChoiceInputNode = -1;
+		prevChoiceDirection = -1;
 		PhaseInTicTacToeBoard (false);
 		yield return new WaitForSeconds(delayForPhase);
 		//board moves
