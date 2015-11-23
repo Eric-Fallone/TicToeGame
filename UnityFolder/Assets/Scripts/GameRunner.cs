@@ -26,9 +26,16 @@ public class GameRunner : MonoBehaviour {
 	public Button[] butNodeInputs;
 	public Button[] butDirInputs;
 	public Button butConfirm;
+
+	public Image[] playerTurnIndicator;
+	public Color turnNotActive;
+
 	public float delayForPhase;
 	public float delayForPhaseSmoothness;
 	public float delayForStartingGame;
+
+	public Camera cameraMain;
+	public Camera cameraObserve;
 
 	void Start () {
 		S = this;
@@ -48,8 +55,15 @@ public class GameRunner : MonoBehaviour {
 		playerNames[2]="It is a draw";
 		playerNames[3]="Both players win...so its a draw";
 		//dont destroy on load object from menu
-		playerNames [0] += "Player One has won";
-		playerNames [1] += "Player Two has won";
+	//	playerNames [0] = ;
+	//	playerNames [1] = ;
+
+
+
+		playerTurnIndicator [0].color = playerMat [0].color;
+		playerTurnIndicator [1].color = turnNotActive;
+		playerTurnIndicator [0].enabled = false;
+		playerTurnIndicator [1].enabled = false;
 
 		StartCoroutine (waitToStart());
 	}
@@ -67,13 +81,25 @@ public class GameRunner : MonoBehaviour {
 		foreach(Button but in butNodeInputs){
 			but.gameObject.SetActive(stateI);
 		}
+
+		playerTurnIndicator [0].enabled = stateI;
+		playerTurnIndicator [1].enabled = stateI;
+	}
+
+	public void changeCamera(){
+		cameraMain.enabled = !cameraMain.enabled;
+		cameraObserve.enabled = !cameraObserve.enabled;
 	}
 
 	public void nextTurn(){
 		if (curPlayer == 0) {
 			curPlayer = 1;
+			playerTurnIndicator [0].color  = turnNotActive;
+			playerTurnIndicator [1].color = playerMat [1].color;
 		} else {
 			curPlayer = 0;
+			playerTurnIndicator [1].color  = turnNotActive;
+			playerTurnIndicator [0].color = playerMat [0].color;
 		}
 		//populates tic tac toe board
 		StartCoroutine( PopulateBoard ());
@@ -258,7 +284,7 @@ public class GameRunner : MonoBehaviour {
 		}
 		butConfirm.gameObject.SetActive (false);
 
-		Debug.Log (playerNames[winningPlayer]);
+		Debug.Log (playerNames[winningPlayer]+" has won");
 	}
 
 	public void chooseNode(int go){

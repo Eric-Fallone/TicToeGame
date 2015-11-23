@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\Cube_Movement.cs" />
      <Compile Include="Assets\Scripts\Cube_Node.cs" />
      <Compile Include="Assets\Scripts\GameRunner.cs" />
+     <Compile Include="Assets\Scripts\camera_Viewing.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.8/Standalone/UnityEngine.UI.dll</HintPath>
  </Reference>
