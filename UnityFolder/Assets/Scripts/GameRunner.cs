@@ -26,6 +26,8 @@ public class GameRunner : MonoBehaviour {
 	public Button[] butNodeInputs;
 	public Button[] butDirInputs;
 	public Button butConfirm;
+	public Button butGameOver;
+	public Text butGameOverText;
 
 	public Image[] playerTurnIndicator;
 	public Color turnNotActive;
@@ -283,8 +285,23 @@ public class GameRunner : MonoBehaviour {
 			but.gameObject.SetActive(false);
 		}
 		butConfirm.gameObject.SetActive (false);
+		butGameOverText.text = playerNames[winningPlayer];
+		if(winningPlayer == 1 || winningPlayer == 0){
+			butGameOverText.text += " has won!";
+			ColorBlock cb;
+			cb = butGameOver.colors;
+			cb.normalColor = playerMat[winningPlayer].color;
+			cb.highlightedColor = playerMat[winningPlayer].color;
+			butGameOver.colors = cb;
+		}
+		butGameOver.gameObject.SetActive (true);
+	}
 
-		Debug.Log (playerNames[winningPlayer]+" has won");
+	public void ResetLevel(){
+		Invoke ("resetLevelHelper",2);
+	}
+	void resetLevelHelper(){
+		Application.LoadLevel (Application.loadedLevel);
 	}
 
 	public void chooseNode(int go){
