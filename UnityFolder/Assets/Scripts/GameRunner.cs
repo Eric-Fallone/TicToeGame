@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class GameRunner : MonoBehaviour {
@@ -13,7 +14,9 @@ public class GameRunner : MonoBehaviour {
 
 	//Player Choices variables
 	public int playerSel;
-	public Cube_Node[] availableChoices;
+	public List<Cube_Node> availableChoices = new List<Cube_Node>();
+	public float choiceSize;
+	public float restingSize;
 
 	public string playerChoiceDir;
 	public string prevDir;
@@ -68,12 +71,14 @@ public class GameRunner : MonoBehaviour {
 		playerTurnIndicator [1].enabled = false;
 
 		StartCoroutine (waitToStart());
+
 	}
 
 	IEnumerator waitToStart(){
 		gameStart(false);
 		yield return new WaitForSeconds (delayForStartingGame);
 		gameStart(true);
+		StartCoroutine( PopulateBoard ());
 	}
 
 	public void gameStart(bool stateI){
@@ -122,6 +127,9 @@ public class GameRunner : MonoBehaviour {
 			}
 			if(inputNodes[i].playNum==2){
 				validMove = true;
+				availableChoices.Add(findClosestCubeNode(inputNodes[i].transform.GetChild(0)));
+				availableChoices[availableChoices.Count-1].scaleNode(restingSize , choiceSize);
+				Debug.Log(i);
 			}
 		}
 		if (validMove == false) {
@@ -153,6 +161,9 @@ public class GameRunner : MonoBehaviour {
 		GameObject[] allNodes = GameObject.FindGameObjectsWithTag("Node"); 
 
 		foreach (GameObject node in allNodes) {
+			if(node.GetComponent<Cube_Node>() == null){
+				continue;
+			}
 			Vector3 diff = node.transform .position - tran.position;
 			float curDistance = diff.sqrMagnitude;
 			if(curDistance < .1f){
@@ -390,7 +401,14 @@ public class GameRunner : MonoBehaviour {
 
 	IEnumerator ConfirmSelHelper(){
 		//cube is updated
-		findClosestCubeNode (inputNodes[playerSel].transform.GetChild(0).transform).setColor(playerMat[curPlayer]);
+		//update the chosen node 
+
+		foreach(Cube_Node node in availableChoices){
+			node.scaleNode(choiceSize , restingSize);
+		}
+		availableChoices.Clear();
+		findClosestCubeNode (inputNodes[playerSel].transform.GetChild(0).transform).claimNode(curPlayer);
+
 		inputNodes [playerSel].playNum = curPlayer;
 		inputNodes [playerSel].renderer.material=playerMat[curPlayer];
 
@@ -398,9 +416,7 @@ public class GameRunner : MonoBehaviour {
 			but.gameObject.SetActive(false);
 		}
 
-		if(CheckPlayerWin()==true){
-			yield break;
-		}
+
 		ColorBlock cb;
 		if(prevChoiceInputNode != -1){
 			cb = butNodeInputs [prevChoiceInputNode].colors;
