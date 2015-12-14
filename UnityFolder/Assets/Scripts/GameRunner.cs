@@ -38,6 +38,7 @@ public class GameRunner : MonoBehaviour {
 	public float delayForPhase;
 	public float delayForPhaseSmoothness;
 	public float delayForStartingGame;
+	public float delayForGameOver;
 
 	public Camera cameraMain;
 	public Camera cameraObserve;
@@ -129,11 +130,10 @@ public class GameRunner : MonoBehaviour {
 				validMove = true;
 				availableChoices.Add(findClosestCubeNode(inputNodes[i].transform.GetChild(0)));
 				availableChoices[availableChoices.Count-1].scaleNode(restingSize , choiceSize);
-				Debug.Log(i);
 			}
 		}
 		if (validMove == false) {
-			playerVictory (2);
+			StartCoroutine( playerVictory (2));
 		} 
 
 		PhaseInTicTacToeBoard (true);
@@ -281,14 +281,14 @@ public class GameRunner : MonoBehaviour {
 			return false;
 		}
 		if(bothWin==true){
-			playerVictory(3);
+			StartCoroutine( playerVictory(3));
 		}else{
-			playerVictory (winningPlayer);
+			StartCoroutine( playerVictory (winningPlayer));
 		}
 		return true;
 	}
 
-	void playerVictory(int winningPlayer){
+	IEnumerator playerVictory(int winningPlayer){
 		foreach(Button but in butDirInputs){
 			but.gameObject.SetActive(false);
 		}
@@ -296,6 +296,9 @@ public class GameRunner : MonoBehaviour {
 			but.gameObject.SetActive(false);
 		}
 		butConfirm.gameObject.SetActive (false);
+
+		yield return new WaitForSeconds (delayForGameOver);
+
 		butGameOverText.text = playerNames[winningPlayer];
 		if(winningPlayer == 1 || winningPlayer == 0){
 			butGameOverText.text += " has won!";
@@ -321,12 +324,15 @@ public class GameRunner : MonoBehaviour {
 		//highlight selection
 		ColorBlock cb;
 		if(prevChoiceInputNode != -1){
+			findClosestCubeNode (inputNodes[prevChoiceInputNode].transform.GetChild(0).transform).changeColorNode(playerMat [2].color);
+
 			cb = butNodeInputs[prevChoiceInputNode].colors;
 			cb.highlightedColor = playerMat [2].color;
 			cb.normalColor = playerMat [2].color;
 			butNodeInputs[prevChoiceInputNode].colors = cb;
 		}
 		prevChoiceInputNode = go;
+		findClosestCubeNode (inputNodes[prevChoiceInputNode].transform.GetChild(0).transform).changeColorNode(playerMat [curPlayer].color);
 		cb = butNodeInputs [go].colors;
 		cb.highlightedColor = playerMat [curPlayer].color;
 		cb.normalColor = playerMat [curPlayer].color;
@@ -367,8 +373,8 @@ public class GameRunner : MonoBehaviour {
 		ColorBlock cb;
 		if(prevChoiceDirection != -1){
 			cb = butDirInputs[prevChoiceDirection].colors;
-			cb.normalColor = playerMat[2].color;
-			cb.highlightedColor = playerMat[2].color;
+			cb.normalColor = Color.white;
+			cb.highlightedColor = Color.white;
 			butDirInputs[prevChoiceDirection].colors = cb;
 		}
 
@@ -426,8 +432,8 @@ public class GameRunner : MonoBehaviour {
 		}
 		if(prevChoiceDirection != -1){
 			cb = butDirInputs [prevChoiceDirection].colors;
-			cb.normalColor = playerMat [2].color;
-			cb.highlightedColor = playerMat [2].color;
+			cb.normalColor = Color.white;
+			cb.highlightedColor = Color.white;
 			butDirInputs [prevChoiceDirection].colors = cb;
 		}
 		prevChoiceInputNode = -1;

@@ -10,6 +10,10 @@ public class Cube_Node : MonoBehaviour {
 
 	public bool isInputNode;
 
+	float lerpSmoothness = .025f; 
+
+
+
 	void Start(){
 		playNum = 2;
 		if(isInputNode == false){
@@ -19,19 +23,21 @@ public class Cube_Node : MonoBehaviour {
 
 	public void claimNode(int curPlayer){
 		playNum = curPlayer;
-		StartCoroutine (lerpColor (curPlayer));
+		StartCoroutine (lerpColor (GameRunner.S.playerMat [curPlayer].color));
 		StartCoroutine (lerpScale ( GameRunner.S.choiceSize , 3f));
 	}
 	public void scaleNode(float start, float end){
 		StopAllCoroutines ();
 		StartCoroutine (lerpScale (start,end));
 	}
-	IEnumerator lerpColor(int CurPlayer){
+	public void changeColorNode(Color end){
+		StartCoroutine ( lerpColor(end));
+	}
+	IEnumerator lerpColor(Color end){
 		Color start = model.renderer.material.color;
-		Color end = GameRunner.S.playerMat [CurPlayer].color;
 		for(float c =0 ; c<1.05;c=c+.1f){
 			model.renderer.material.color = Color.Lerp(start,end,c);
-			yield return new WaitForSeconds(.1f);
+			yield return new WaitForSeconds(lerpSmoothness);
 		}
 	}
 
@@ -40,7 +46,7 @@ public class Cube_Node : MonoBehaviour {
 		for(float c =0 ; c<1.05;c=c+.1f){
 			cur = Mathf.Lerp(start,end,c);
 			model.transform.localScale = new Vector3(cur,cur,cur);
-			yield return new WaitForSeconds(.05f);
+			yield return new WaitForSeconds(lerpSmoothness);
 		}
 	}
 
