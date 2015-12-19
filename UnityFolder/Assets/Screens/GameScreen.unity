@@ -2020,6 +2020,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 0d9a2598e57b5504e80da0688a236d34, type: 2}
   - {fileID: 2100000, guid: 8d1b4c8a1e14fc24e95c9822382994ea, type: 2}
   - {fileID: 2100000, guid: 30c099c1e2d409549a53bfa873708cfc, type: 2}
+  isComp: 0
   playerNames: []
   playerSel: 0
   availableChoices: []

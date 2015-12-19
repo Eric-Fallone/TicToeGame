@@ -3,12 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
+public enum isPlayer{
+	human,
+	easy,
+	med,
+	dif
+}
+
 public class GameRunner : MonoBehaviour {
 	public static GameRunner S;
 	//player info variables
 	public int curPlayer;
 	//third slot is base material
 	public Material[] playerMat;
+	public isPlayer isComp;
 	public string[] playerNames;
 	// // // // // // //
 
@@ -61,10 +69,13 @@ public class GameRunner : MonoBehaviour {
 		playerNames[2]="It is a draw";
 		playerNames[3]="Both players win...so its a draw";
 		//dont destroy on load object from menu
-	//	playerNames [0] = ;
-	//	playerNames [1] = ;
+		if(Game_Loader.S!= null){
+			playerNames [0] = Game_Loader.S.playNames[0];
+			playerNames [1] = Game_Loader.S.playNames [1];
 
-
+			playerMat[0].color = Game_Loader.S.playCol[0];
+			playerMat[1].color = Game_Loader.S.playCol[1];
+			}
 
 		playerTurnIndicator [0].color = playerMat [0].color;
 		playerTurnIndicator [1].color = turnNotActive;
